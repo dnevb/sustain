@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node18-strictest",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "dist",
+    "rootDir": ".",
+    "resolveJsonModule": true
+  }
+}
