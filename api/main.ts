@@ -1,17 +1,22 @@
+import "reflect-metadata";
+
 import fastifyAutoload from "@fastify/autoload";
 import fastifyCors from "@fastify/cors";
 import fastifySensible from "@fastify/sensible";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import type { FastifyPluginAsync } from "fastify";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
+import datasource from "./datasource";
 import pkg from "./package.json" assert { type: "json" };
+import getDirname from "./utils/dirname";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = getDirname(import.meta.url);
 
 const main: FastifyPluginAsync = async (app, opts) => {
   // defaults
+  const ds = await datasource.initialize();
+  app.decorate("ds", ds);
   app.register(fastifySensible);
   app.register(fastifyCors);
 
