@@ -1,14 +1,14 @@
 import { nanoid } from "nanoid";
 import {
   BaseEntity,
-  Column,
   CreateDateColumn,
   DeleteDateColumn,
+  PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 
 export default abstract class BaseModel extends BaseEntity {
-  @Column({ default: () => nanoid(8) })
+  @PrimaryColumn({ default: () => nanoid(8) })
   id: string;
   @DeleteDateColumn()
   deleted: Date;

@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-import BaseModel from "./base";
-import { User } from "./user";
+import BaseModel from "./base.js";
+import { User } from "./user.js";
 
 const status = ["pending", "in_progress", "canceled", "completed"];
 

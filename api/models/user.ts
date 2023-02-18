@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm";
-import BaseModel from "./base";
+import BaseModel from "./base.js";
 
 @Entity({ name: "user" })
 export class User extends BaseModel {
@@ -11,6 +11,12 @@ export class User extends BaseModel {
   display_name: string;
   @Column()
   email: string;
+  @Column()
+  password: string;
   @Column({ enum: ["client", "technician"] })
   role: "client" | "technician";
+
+  static async getByEmail(email: string) {
+    return await this.findOneBy({ email });
+  }
 }
