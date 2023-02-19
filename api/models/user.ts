@@ -19,4 +19,11 @@ export class User extends BaseModel {
   static async getByEmail(email: string) {
     return await this.findOneBy({ email });
   }
+
+  static async getRandom() {
+    const items = await this.find();
+    const index = Math.ceil(Math.random() * items.length);
+
+    return items[index]!;
+  }
 }

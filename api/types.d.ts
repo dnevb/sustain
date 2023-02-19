@@ -5,3 +5,10 @@ export module "fastify" {
     ds: DataSource;
   }
 }
+
+declare module "@fastify/jwt" {
+  interface FastifyJWT {
+    user: any;
+    payload: any;
+  }
+}
