@@ -30,7 +30,7 @@ const ticketListRoute: FastifyPluginAsync = async (app) => {
       const ticket = await Ticket.findOneBy({ id: req.params.id });
 
       if (
-        [ticket?.assigned_to.id, ticket?.requested_by.id].includes(
+        ![ticket?.assigned_to.id, ticket?.requested_by.id].includes(
           user["id"]
         )
       )
